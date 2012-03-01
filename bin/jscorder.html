@@ -1,0 +1,131 @@
+<html>
+	<head> 
+		<title>JSCorder - the test page</title>
+	</head>
+	<body>
+		JSCorder - the test page
+		Control the webcam and streaming video from javascript
+		<p>
+			<a href="javascript:connectCallback();">Connect</a>-
+			<a href="javascript:playCallback();">Play</a>-
+			<a href="javascript:pauseCallback();">Pause</a>-
+			<a href="javascript:resumeCallback();">Resume</a>-
+			<a href="javascript:togglePauseCallback();">Pause Toggle</a>-
+			<a href="javascript:stopCallback();">Stop</a>-
+			<a href="javascript:seekCallback(10000);">Seek to 10''</a>-
+			<a href="javascript:getTimeCallback();">Get current time</a>-
+			<a href="javascript:recordCallback();">Record</a>-
+			<a href="javascript:appendCallback();">Record at the end of existing video</a>-
+			<a href="javascript:liveCallback();">Stream live</a>
+		</p>
+		<p>
+			<object id="jscorderObject" width="100%" height="100%">
+				<param name="flashvars" value="fileName=recvideo&serverURL=rtmp://192.168.1.12/&applicationName=live&instanceName=&">
+				<param name="movie" value="jscorder.swf">
+				<param name="scaleMode" value="showall">
+				<param name="allowFullScreen" value="true"> 
+				<param name="allowScriptAccess" value="always" />
+				<embed id="jscorderEmbed" src="jscorder.swf" width="100%" height="100%" allowfullscreen="true" allowScriptAccess="always"
+					scaleMode="showall" 
+					flashvars="fileName=recvideo&serverURL=rtmp://192.168.1.12/&applicationName=live&instanceName=&" >
+				</embed>
+			</object>
+			<script type="text/javascript">
+				// get the flash plugin object (either the embed tag or object tag)
+				var jscorder = document.getElementById('jscorderObject');
+				if (jscorder.isJSCorderOK == undefined) jscorder = document.getElementById('jscorderEmbed');
+				
+				/**
+				 * receive NetStatusEvent object
+				 * @param	event	http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/events/NetStatusEvent.html
+				 */
+				function onJSRecorderEvent(event)
+				{
+					// here you can use event.code
+					//console.debug("onJSRecorderEvent "+event.code+" - "+event.level);
+				}
+				/**
+				 * connect to the server
+				 */
+				function connectCallback ()
+				{
+					jscorder.connect();
+				}
+				/**
+				 * connect to the server if needed
+				 * play the file
+				 */
+				function playCallback ()
+				{
+					jscorder.play();
+				}
+				/**
+				 * pause
+				 */
+				function pauseCallback ()
+				{
+					jscorder.pause();
+				}
+				/**
+				 * play/pause toggle
+				 */
+				function togglePauseCallback ()
+				{
+					jscorder.togglePause();
+				}
+				/**
+				 * resume if paused
+				 */
+				function resumeCallback ()
+				{
+					jscorder.resume();
+				}
+				/**
+				 * stop
+				 */
+				function stopCallback ()
+				{
+					jscorder.stop();
+				}
+				/**
+				 * connect to the server if needed
+				 * stream live and record
+				 */
+				function recordCallback ()
+				{
+					jscorder.record();
+				}
+				/**
+				 * connect to the server if needed
+				 * stream live, no recording
+				 */
+				function liveCallback ()
+				{
+					jscorder.live();
+				}
+				/**
+				 * connect to the server if needed
+				 * record and append to the end of the video if it exists
+				 */
+				function appendCallback ()
+				{
+					jscorder.append();
+				}
+				/**
+				 * @param	position in milli seconds
+				 */
+				function seekCallback (t)
+				{
+					jscorder.seek(t);
+				}
+				/**
+				 * @param	position in milli seconds
+				 */
+				function getTimeCallback()
+				{
+					alert(jscorder.getTime());
+				}
+			</script>
+		</p>
+	</body>
+</html>
