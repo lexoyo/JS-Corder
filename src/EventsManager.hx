@@ -12,7 +12,7 @@ class EventsManager
 	{
 		this.jsCorder = jsCorder;
 	}
-	public function onBWDone(a:String):Void
+	public function onBWDone(a:String=""):Void
 	{
 		trace("bandwidth = " + a + " Kbps.");
 	}
