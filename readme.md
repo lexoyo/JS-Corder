@@ -1,6 +1,7 @@
 #JS Corder
 
-	Control the webcam and video streaming from javascript
+	Control the webcam and video streaming from javascript.
+	This uses the Flash plugin and a streaming server (Flash Media Server, Red5, Wowza...)
 
 	author Alex Hoyau
 	date 2012
