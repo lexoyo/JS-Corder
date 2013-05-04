@@ -1,4 +1,4 @@
-JS Corder
+#JS Corder
 
 	Control the webcam and video streaming from javascript
 
